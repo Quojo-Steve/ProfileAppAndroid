@@ -20,9 +20,21 @@
         android:textSize="16sp" />
 
     <TextView android:id="@+id/indexText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Index"
+    android:textSize="16sp" />
+
+    <TextView android:id="@+id/programmeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Index"
+        android:text="Programme"
+        android:textSize="16sp" />
+
+    <TextView android:id="@+id/dobText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth"
         android:textSize="16sp" />
 
     <LinearLayout
@@ -34,12 +46,14 @@
             android:id="@+id/editBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="Edit"
             android:layout_weight="1"/>
 
         <Button
             android:id="@+id/deleteBtn"
             android:layout_width="0dp"
+            android:backgroundTint="@color/red"
             android:layout_height="wrap_content"
             android:text="Delete"
             android:layout_weight="1"/>

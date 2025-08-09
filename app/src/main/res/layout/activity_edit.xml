@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/editPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditActivity">
@@ -47,11 +47,37 @@
         app:layout_constraintTop_toBottomOf="@+id/age1"
         app:layout_constraintVertical_bias="0.049" />
 
+    <EditText
+        android:id="@+id/programme1"
+        android:layout_width="369dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Programme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/index_num1"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <EditText
+        android:id="@+id/dob1"
+        android:layout_width="369dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Date of Birth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/programme1"
+        app:layout_constraintVertical_bias="0.049" />
+
     <Button
         android:id="@+id/edit"
         android:layout_width="148dp"
         android:layout_height="59dp"
-        android:backgroundTint="@color/red"
+        android:backgroundTint="@color/blue"
         android:text="Update Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

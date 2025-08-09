@@ -20,6 +20,8 @@
         <activity
             android:name=".AllData"
             android:exported="false" />
+        <activity android:name=".EditActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

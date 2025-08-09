@@ -1,5 +1,6 @@
 package com.example.profileapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -39,19 +40,12 @@ public class AllData extends AppCompatActivity {
 
         db = new Database(this, null, null, 1);
         userList = new ArrayList<>();
-
-        Cursor cursor = db.getAllUsers();
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-            String age = cursor.getString(cursor.getColumnIndexOrThrow("age"));
-            String index = cursor.getString(cursor.getColumnIndexOrThrow("index_number"));
-            userList.add(new UserModel(name, age, index));
-        }
-        cursor.close();
-
         adapter = new UserAdapter(this, userList, db, editLauncher);
         recyclerView.setAdapter(adapter);
+        loadUsers(); // load the data initially
     }
+
+    @SuppressLint("NotifyDataSetChanged")
     private void loadUsers() {
         userList.clear();
         Cursor cursor = db.getAllUsers();
@@ -59,10 +53,12 @@ public class AllData extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String age = cursor.getString(cursor.getColumnIndexOrThrow("age"));
             String index = cursor.getString(cursor.getColumnIndexOrThrow("index_number"));
-            userList.add(new UserModel(name, age, index));
+            String programme = cursor.getString(cursor.getColumnIndexOrThrow("programme"));
+            String dob = cursor.getString(cursor.getColumnIndexOrThrow("dob"));
+
+            userList.add(new UserModel(name, age, index, programme, dob));
         }
         cursor.close();
         adapter.notifyDataSetChanged();
     }
-
 }

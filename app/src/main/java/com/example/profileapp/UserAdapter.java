@@ -1,4 +1,3 @@
-// UserAdapter.java
 package com.example.profileapp;
 
 import android.app.AlertDialog;
@@ -25,14 +24,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     Database db;
     ActivityResultLauncher<Intent> editLauncher;
 
-
     public UserAdapter(Context context, ArrayList<UserModel> userList, Database db, ActivityResultLauncher<Intent> editLauncher) {
         this.context = context;
         this.userList = userList;
         this.db = db;
         this.editLauncher = editLauncher;
     }
-
 
     @NonNull
     @Override
@@ -44,9 +41,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         UserModel user = userList.get(position);
+
         holder.name.setText("Name: " + user.getName());
         holder.age.setText("Age: " + user.getAge());
         holder.index.setText("Index: " + user.getIndex());
+        holder.programme.setText("Programme: " + user.getProgramme());
+        holder.dob.setText("DOB: " + user.getDob());
 
         holder.deleteBtn.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
@@ -62,15 +62,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                     .show();
         });
 
-
         holder.editBtn.setOnClickListener(v -> {
             Intent intent = new Intent(context, Edit.class);
             intent.putExtra("name", user.getName());
             intent.putExtra("age", user.getAge());
             intent.putExtra("index_number", user.getIndex());
+            intent.putExtra("programme", user.getProgramme());
+            intent.putExtra("dob", user.getDob());
             editLauncher.launch(intent);
         });
-
     }
 
     @Override
@@ -79,7 +79,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView name, age, index;
+        TextView name, age, index, programme, dob;
         Button editBtn, deleteBtn;
 
         public UserViewHolder(@NonNull View itemView) {
@@ -87,6 +87,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             name = itemView.findViewById(R.id.nameText);
             age = itemView.findViewById(R.id.ageText);
             index = itemView.findViewById(R.id.indexText);
+            programme = itemView.findViewById(R.id.programmeText);
+            dob = itemView.findViewById(R.id.dobText);
             editBtn = itemView.findViewById(R.id.editBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
         }

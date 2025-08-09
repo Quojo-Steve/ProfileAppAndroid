@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
-    EditText name, age, index_num;
+    EditText name, age, index_num, programme, dob;
     Database db;
 
     @Override
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         age = findViewById(R.id.age);
         index_num = findViewById(R.id.index_num);
+        programme = findViewById(R.id.programme);
+        dob = findViewById(R.id.dob);
         button = findViewById(R.id.save);
 
         // Initialize Database
@@ -44,22 +46,12 @@ public class MainActivity extends AppCompatActivity {
             String userName = name.getText().toString();
             String userAge = age.getText().toString();
             String userIndex = index_num.getText().toString();
+            String userProgramme = programme.getText().toString();
+            String userDob = dob.getText().toString();
 
             if (!userName.isEmpty() && !userAge.isEmpty() && !userIndex.isEmpty()) {
-                db.insert_data(userName, userAge, userIndex);
+                db.insert_data(userName, userAge, userIndex, userProgramme, userDob);
                 Log.d("DATABASE", "Student added.");
-
-                // Retrieve and log all data
-                Cursor cursor = db.getAllUsers();
-                while (cursor.moveToNext()) {
-                    String n = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                    String a = cursor.getString(cursor.getColumnIndexOrThrow("age"));
-                    String i = cursor.getString(cursor.getColumnIndexOrThrow("index_number"));
-
-                    Log.d("STUDENT_RECORD", "Name: " + n + ", Age: " + a + ", Index: " + i);
-                }
-
-                cursor.close();
                 Intent intent = new Intent(MainActivity.this, AllData.class);
                 startActivity(intent);
             } else {
